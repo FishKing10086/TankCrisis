@@ -9,6 +9,7 @@
 class UCameraComponent;
 class USpringArmComponent;
 class UCapsuleComponent;
+class UBoxComponent;
 UCLASS()
 class TANKLERANPROJECT_API ABasePawn : public APawn
 {
@@ -36,6 +37,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
 	UCameraComponent* Camera;
+
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	UBoxComponent* BoxComponent;
 	
 protected:
 	// Called when the game starts or when spawned
