@@ -5,7 +5,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/CapsuleComponent.h"
-#include "EnhancedInputSubsystems.h"
+
 #include "Components/InputComponent.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -64,8 +64,8 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAction(TEXT("Fire"),EInputEvent::IE_Pressed,this,&ATank::Fire);
-	PlayerInputComponent->BindAxis(TEXT("Moveforad"),this,&ATank::MoveForward);
-	PlayerInputComponent->BindAxis(TEXT("MoveRight"),this,&ATank::MoveRight);
+	// PlayerInputComponent->BindAction(TEXT("Fire"),EInputEvent::IE_Pressed,this,&ATank::Fire);
+	// PlayerInputComponent->BindAxis(TEXT("Moveforad"),this,&ATank::MoveForward);
+	// PlayerInputComponent->BindAxis(TEXT("MoveRight"),this,&ATank::MoveRight);
 }
 

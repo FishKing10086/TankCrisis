@@ -21,9 +21,6 @@ public:
 	ABasePawn();
 
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
-	UCapsuleComponent* CapsuleComponent;
-
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
 	UStaticMeshComponent* BaseMesh;
 
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
