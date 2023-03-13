@@ -37,13 +37,23 @@ public:
 
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
 	UBoxComponent* BoxComponent;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class AProjectile> ProjectClass;
 	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	void RotateTurret(FVector LookAtTarget);
+
+
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void Fire();
+
+	virtual void HandleDestruction();
 };

@@ -3,8 +3,10 @@
 
 #include "BasePawn.h"
 
-
+#include "Projectile.h"
+#include "Kismet//KismetMathLibrary.h"
 #include "Components/BoxComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Components/CapsuleComponent.h"
 
 
@@ -34,6 +36,33 @@ void ABasePawn::BeginPlay()
 {
 	Super::BeginPlay();
 	
+}
+
+void ABasePawn::RotateTurret(FVector LookAtTarget)
+{
+	FVector ToTarget = LookAtTarget -  TurretMesh->GetComponentLocation();
+	FRotator LookAtRotation =FRotator(0, ToTarget.Rotation().Yaw,0);
+	TurretMesh->SetWorldRotation(FMath::RInterpTo(TurretMesh->GetComponentRotation(),LookAtRotation,UGameplayStatics::GetWorldDeltaSeconds(this),25));
+	
+}
+
+void ABasePawn::Fire()
+{
+	FActorSpawnParameters SpawnParam;
+	if(ProjectClass.Get())
+	{
+		auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectClass,ProjectilePoint->GetComponentLocation(),ProjectilePoint->GetComponentRotation(),SpawnParam);
+		Projectile->SetOwner(this);
+	}
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(-1,2.f,FColor::Red,TEXT("NoSettingAmmoClass"));
+	}
+	
+}
+
+void ABasePawn::HandleDestruction()
+{
 }
 
 // Called every frame

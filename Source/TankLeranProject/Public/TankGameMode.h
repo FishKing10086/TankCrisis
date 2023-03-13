@@ -3,23 +3,21 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/GameModeBase.h"
-#include "MyGameModeBase.generated.h"
+#include "GameFramework/GameMode.h"
+#include "TankGameMode.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class TANKLERANPROJECT_API AMyGameModeBase : public AGameModeBase
+class TANKLERANPROJECT_API ATankGameMode : public AGameMode
 {
 	GENERATED_BODY()
 public:
-	AMyGameModeBase();
-
-
+	ATankGameMode();
 
 	virtual void BeginDestroy() override;
 
-
+private:
 
 };

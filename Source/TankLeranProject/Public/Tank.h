@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "BasePawn.h"
+#include "EnemyBase.h"
 #include "Tank.generated.h"
+
 
 /**
  * 
@@ -21,26 +23,6 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	float TurnSpeed = 90;
-private:
-	void Fire();
-
-	void MoveForward(float Value);
-
-	void MoveRight(float Value);
-
-
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-	
 };
 
 	

@@ -3,11 +3,20 @@
 
 #include "MyGameModeBase.h"
 
-#include "BasePawn.h"
+
+#include "Kismet/GameplayStatics.h"
 
 
 AMyGameModeBase::AMyGameModeBase()
 {
 	
 
+}
+
+
+
+void AMyGameModeBase::BeginDestroy()
+{
+	Super::BeginDestroy();
+	 
 }
