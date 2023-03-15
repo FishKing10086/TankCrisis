@@ -15,15 +15,12 @@ APlayerTank::APlayerTank()
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm);
+
+
 }
 
-void APlayerTank::HandleDestruction()
-{
-	Super::HandleDestruction();
-	
-	SetActorHiddenInGame(true);
-	SetActorTickEnabled(false);
-}
+
+
 
 void APlayerTank::Fire()
 {
@@ -45,6 +42,8 @@ void APlayerTank::MoveForward(float Value)
 		
 		DeltaVector.X=Value;
 		AddActorLocalOffset(DeltaVector,true);
+
+
 	}
 }
 

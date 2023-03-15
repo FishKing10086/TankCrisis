@@ -13,6 +13,8 @@ AProjectile::AProjectile()
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	RootComponent = ProjectileMesh;
 	ProjectileComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileComponent"));
+	ProjectileComponent->MaxSpeed = 5000;
+	ProjectileComponent->InitialSpeed = 3000;
 }
 
 // Called when the game starts or when spawned
@@ -42,6 +44,15 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 
 	if(OtherActor && OtherActor != this && OtherActor != MyOwner)
 	{
+		if(HitParticle)
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(),HitParticle,Hit.ImpactPoint);	
+		}
+		else
+		{
+			UE_LOG(LogTemp,Warning,TEXT("HitParticle NOT Setting!!!"));
+		}
+		
 		UGameplayStatics::ApplyDamage(OtherActor,Damage,MyOwnerInstigator,this,DamageTypeClass);
 
 	}

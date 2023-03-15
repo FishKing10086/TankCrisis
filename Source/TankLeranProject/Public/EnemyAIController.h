@@ -3,27 +3,33 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Tank.h"
-#include "Tower.h"
-#include "EnemyTank.generated.h"
+#include "AIController.h"
+#include "EnemyAIController.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class TANKLERANPROJECT_API AEnemyTank : public AEnemyBase
+class TANKLERANPROJECT_API AEnemyAIController : public AAIController
 {
 	GENERATED_BODY()
 public:
-	AEnemyTank();
-	
-	UPROPERTY(VisibleAnywhere)
-	UPawnMovementComponent* PawnMovementComponent;
+	AEnemyAIController();
+	UPROPERTY()
+	class APlayerTank* PlayerTank;
 
+	UPROPERTY(EditAnywhere)
+	UBehaviorTree* BehaviorTree; 
+	
+	bool InFireRange();
 	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UPROPERTY()
+	APawn* PlayerPawn;
+	
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

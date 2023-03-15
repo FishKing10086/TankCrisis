@@ -25,11 +25,17 @@ public:
 	UStaticMeshComponent* ProjectileMesh;
 
 	UPROPERTY(EditDefaultsOnly)
-	float Damage = 10;
-
-	UPROPERTY(EditDefaultsOnly)
 	class UProjectileMovementComponent* ProjectileComponent;
 
+	UPROPERTY(EditDefaultsOnly)
+	UParticleSystem* HitParticle;
+	
+	UPROPERTY(EditDefaultsOnly)
+	float Damage = 10;
+
+	UPROPERTY()
+	float Speed;
+	
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse,const FHitResult& Hit);
 

@@ -4,6 +4,8 @@
 #include "HealthComponent.h"
 
 #include "BasePawn.h"
+#include "EnemyBase.h"
+#include "MonsterBase.h"
 #include "MyGameModeBase.h"
 
 #include "Kismet/GameplayStatics.h"
@@ -47,7 +49,19 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDa
 
 	if(Health <= 0 )
 	{
-		Cast<ABasePawn>(DamagedActor)->HandleDestruction();
+		ABasePawn* BasePawn  =Cast<ABasePawn>(DamagedActor);
+		if(BasePawn)
+		{
+			BasePawn->HandleDestruction();
+		}
+		else
+		{
+			AMonsterBase* EnemyBase = Cast<AMonsterBase>(DamagedActor);
+			if(EnemyBase)
+			{
+				EnemyBase->HandleDestruction();
+			}
+		}
 	}
 
 }

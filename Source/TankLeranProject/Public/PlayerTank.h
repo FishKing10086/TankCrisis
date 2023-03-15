@@ -15,12 +15,11 @@ class TANKLERANPROJECT_API APlayerTank : public ATank
 	GENERATED_BODY()
 public:
 	APlayerTank();
-
+	
 	UPROPERTY()
 	APlayerController* TankPlayerController;
-
-	virtual void HandleDestruction() override;
 	
+
 	
 	virtual void Fire() override;
 	

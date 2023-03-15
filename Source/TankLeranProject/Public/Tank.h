@@ -18,6 +18,11 @@ class TANKLERANPROJECT_API ATank : public ABasePawn
 public:
 	ATank();
 
+	virtual void HandleDestruction() override;
+
+	UPROPERTY(EditAnywhere)
+	UParticleSystem* DeathParticle;
+
 	UPROPERTY(VisibleAnywhere)
 	float Speed = 500;
 

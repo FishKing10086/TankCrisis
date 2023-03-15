@@ -3,9 +3,13 @@
 
 #include "EnemyTank.h"
 
+#include "GameFramework/PawnMovementComponent.h"
+
 AEnemyTank::AEnemyTank()
 {
+	PrimaryActorTick.bCanEverTick = true;
 	
+
 }
 
 void AEnemyTank::BeginPlay()
@@ -17,3 +21,4 @@ void AEnemyTank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
+

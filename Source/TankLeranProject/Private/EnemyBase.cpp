@@ -5,9 +5,17 @@
 
 #include "Tank.h"
 #include "Kismet/GameplayStatics.h"
+#include "Particles/ParticleSystem.h"
+#include "UObject/ConstructorHelpers.h"
 
 AEnemyBase::AEnemyBase()
 {
+
+	static ConstructorHelpers::FObjectFinder<UParticleSystem> Partical(TEXT("/Game/Assets/Effects/P_DeathEffect.P_DeathEffect"));
+	if(Partical.Succeeded())
+	{
+		DeathParticle = Partical.Object;
+	}
 }
 
 void AEnemyBase::BeginPlay()
@@ -31,6 +39,17 @@ void AEnemyBase::Tick(float DeltaTime)
 void AEnemyBase::HandleDestruction()
 {
 	Super::HandleDestruction();
+	
+	if(DeathParticle  != nullptr)
+	{
+		
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(),DeathParticle,GetActorLocation());
+	}
+	else
+	{
+		UE_LOG(LogTemp,Warning,TEXT("DeathParticle NOT Setting!!!"));
+	}
+	
 	Destroy();
 }
 

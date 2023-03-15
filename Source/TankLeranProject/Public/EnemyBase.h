@@ -29,12 +29,15 @@ public:
 	class ATank* Tank;
 
 	UPROPERTY(VisibleAnywhere)
-	float MinDistance = 800;
+	float MinDistance = 1500;
 
 	UPROPERTY(VisibleAnywhere)
-	float FireRate = 2;
+	float FireRate = 1.5;
 
 	void CheckFireCondition();
 
+	UPROPERTY(EditAnywhere)
+	UParticleSystem* DeathParticle;
+	
 	bool InFireRange();
 };
